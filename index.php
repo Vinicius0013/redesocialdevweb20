@@ -2,8 +2,11 @@
     session_start();
     require('vendor/autoload.php');
     
-    define('INCLUDE_PATH_STATIC', 'http://localhost:8056/projeto-redes-sociais-web/DankiCode/Views/pages/');
-    define('INCLUDE_PATH', 'http://localhost:8056/projeto-redes-sociais-web/');
+    $dotevn = Dotenv\Dotenv::createImmutable(__DIR__);
+    $dotevn->load();
+    
+    define('INCLUDE_PATH_STATIC', 'http://localhost:8080/redesocialdevweb20/DankiCode/Views/pages/');
+    define('INCLUDE_PATH', 'http://localhost:8080/redesocialdevweb20/');
 
     $app = new DankiCode\Application();
     $app->run();
