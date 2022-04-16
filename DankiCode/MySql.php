@@ -12,8 +12,8 @@ use Exception;
             if (self::$pdo == null) {
                 try
                 {
-                    self::$pdo = new PDO('mysql:host=localhost;dbname=rede_social_curso_devweb20','root','',array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
-                    self::$pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+                    self::$pdo = new \PDO('mysql:host='.$_ENV['HOST'].';dbname='.$_ENV['DBNAME'],$_ENV['USER'],$_ENV['PASSWORD'],array(\PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+                    self::$pdo->setAttribute(\PDO::ATTR_ERRMODE,\PDO::ERRMODE_EXCEPTION);
                 } catch(Exception $e) {
                     echo 'erro ao conectar';
                     error_log($e->getMessage());
