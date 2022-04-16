@@ -28,6 +28,7 @@
                 <input type="text" name="email" placeholder="E-mail...">
                 <input type="password" name="senha" placeholder="Senha...">
                 <input type="submit" name="acao" value="Criar Conta!">
+                <input type="hidden" name="registrar" value="registrar">
             </form>
         </div><!--form-login-->
 
