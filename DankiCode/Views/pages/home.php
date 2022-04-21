@@ -14,27 +14,13 @@
 </head>
 <body>
     <section class="main-feed">
-        <div class="sidebar">
-            <div class="logo-sidebar">
-                <img src="<?php echo INCLUDE_PATH_STATIC; ?>images/logodanki.svg" alt="logo">
-            </div><!--logo-sidebar-->
-            <br/>
-            <div class="menu-sidebar">
-                <h4>Menu</h4><br/>
-                <a href="#"><i class="fa fa-newspaper-o" aria-hidden="true"></i> feed</a>
-                <a href="#"><i class="fa fa-user-o" aria-hidden="true"></i> perfil</a>
-                <a href="#"><i class="fa fa-users" aria-hidden="true"></i> amigos</a>
-
-                <a href="?loggout">loggout</a>
-            </div><!--menu-sidebar-->
-        </div><!--sidebar-->
+        <?php include('includes/sidebar.php'); ?><!--menu-->
 
         <div class="feed">
             <div class="feed-wraper">
                 <div class="feed-single-post">
                     <div class="feed-single-post-author">
                         <div class="img-single-post-author">
-                            <!--todo:COLOCAR IMAGEM PLACEHOLDER-->
                             <img src="<?php echo INCLUDE_PATH_STATIC;?>images/avatar.jpg" alt="avatar">
                         </div>
                         <div class="feed-single-post-author-info">
@@ -50,7 +36,6 @@
                 <div class="feed-single-post">
                     <div class="feed-single-post-author">
                         <div class="img-single-post-author">
-                            <!--todo:COLOCAR IMAGEM PLACEHOLDER-->
                             <img src="<?php echo INCLUDE_PATH_STATIC;?>images/avatar.jpg" alt="avatar">
                         </div>
                         <div class="feed-single-post-author-info">
