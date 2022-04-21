@@ -1,0 +1,191 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+html, body {
+    height: 100%;
+    background: #F6F6F9;
+}
+
+img {
+    font-family: 'Helvetica';
+    font-weight: 300;
+    line-height: 2;
+    text-align: center;
+
+    /* width: 100%;
+    height: auto; */
+    display: block;
+    position: relative;
+    /* min-height: 50px; */
+}
+/*
+:before pode ser coberto pela imagem, porém quando a imagem está "quebrada" ele fica visível
+*/
+img::before{
+    content: " ";
+    display: block;
+    position: absolute;
+    top: -10px;
+    left: 0;
+    width: 100%;
+    height: calc(100% + 10px);
+    background-color: rgb(230, 230, 230);
+    border-radius: 5px;
+}
+/*
+:after mesmo comportamento do :before em relação à imagem
+*/
+img::after {
+    /* \f127 é um ícone do FontAwesome 
+       attr() pega um atributo do elemento, aqui utilizaremos o "alt"
+    */
+    content: "\f127" " Imagem quebrada: '" attr(alt) "'";
+    display: block;
+    font-size: 16px;
+    font-style: normal;
+    font-family: FontAwesome;
+    color: rgb(100, 100, 100);
+    position: absolute;
+    top: -5px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+}
+
+section.main-feed {
+    display: flex;
+    height: 100%;
+}
+
+.sidebar {
+    background: #DEDEE5;
+    padding: 20px 50px;
+    width: 300px;
+}
+
+.sidebar .logo-sidebar img {
+    max-width: 200px;
+}
+
+.feed {
+    overflow-y: auto;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 30px;
+    width: calc(100% - 300px);
+}
+
+.menu-sidebar {
+    text-align: left;
+    display: inline-block;
+}
+
+.menu-sidebar h4 {
+    color: #454545;
+}
+
+.menu-sidebar a {
+    display: block;
+    margin-bottom: 15px;
+    color: #454545;
+    text-decoration: none;
+}
+
+.menu-sidebar a:hover {
+    font-weight: bold;
+    color: #454545;
+}
+
+.feed-wraper{
+	width:70%;
+	padding:30px;
+}
+
+.feed-single-post {
+    padding: 30px 40px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    background-color: #FFFFFF;
+}
+
+.feed-single-post-content{margin:10px 0;}
+
+.feed-single-post-author {
+    display: flex;
+    color: #454545;
+}
+
+.feed-single-post-author h3 {
+    font-size: 17px;
+    width: 100%;
+}
+
+.feed-single-post-author p {
+    font-size: 14px;
+    opacity: 0.4;
+    margin-top: 3px;
+}
+
+.feed-single-post-author img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.img-single-post-author {
+    padding: 0 10px;
+}
+
+.feed-single-post-content {
+    margin: 10px 0;
+}
+
+.feed-single-post-content p {
+    color: #555555;
+    font-size: 15px;
+}
+
+.feed-single-post-content img{
+	max-width: 100%;
+	margin:20px 0;
+}
+
+.friends-request-feed {
+    width: 28%;
+    margin-left: 2%;
+    background-color: #FFFFFF;
+    padding: 30px;
+    color: #454545;
+    border-radius: 10px;
+}
+
+.friend-request-single {
+    display: flex;
+    margin-bottom: 20px;
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.friend-request-single img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.friend-request-single-info {
+    padding: 4px 10px;
+}
+
+.friend-request-single-info h3 {
+    font-size: 14px;
+    color: #454545;
+}
+
+.friend-request-single-info a {
+    font-size: 10px;
+    color: #069;
+}
