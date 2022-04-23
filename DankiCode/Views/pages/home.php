@@ -55,27 +55,22 @@
 
             <div class="friends-request-feed">
                 <h4>Solicitações de amizade</h4>
+
+                <?php
+                    $listaAmizadesPendentes = \DankiCode\Model\UsuariosModel::listarAmizadesPendentes();
+
+                    foreach ($listaAmizadesPendentes as $key => $value) {
+                        $usuarioInfo = \DankiCode\Model\UsuariosModel::getUsuarioById($value['enviou']);
+                ?>
                 <div class="friend-request-single">
                     <img src="<?php echo INCLUDE_PATH_STATIC;?>images/avatar.jpg" alt="avatar">
                     <div class="friend-request-single-info">
-                        <h3>Otávio da Silva</h3>
-                        <p><a href="">Aceitar</a> | <a href="">Recusar</a></p>
+                        <h3><?php echo $usuarioInfo['nome']; ?></h3>
+                        <p><a href="<?php echo INCLUDE_PATH; ?>?aceitarAmizade=<?php echo $usuarioInfo['id']; ?>">Aceitar</a> | <a href="<?php echo INCLUDE_PATH; ?>?recusarAmizade=<?php echo $usuarioInfo['id']; ?>">Recusar</a></p>
                     </div><!--friend-request-single-info-->
                 </div><!--friend-request-single-->
-                <div class="friend-request-single">
-                    <img src="<?php echo INCLUDE_PATH_STATIC;?>images/avatar.jpg" alt="avatar">
-                    <div class="friend-request-single-info">
-                        <h3>Otávio da Silva</h3>
-                        <p><a href="">Aceitar</a> | <a href="">Recusar</a></p>
-                    </div><!--friend-request-single-info-->
-                </div><!--friend-request-single-->
-                <div class="friend-request-single">
-                    <img src="<?php echo INCLUDE_PATH_STATIC;?>images/avatar.jpg" alt="avatar">
-                    <div class="friend-request-single-info">
-                        <h3>Otávio da Silva</h3>
-                        <p><a href="">Aceitar</a> | <a href="">Recusar</a></p>
-                    </div><!--friend-request-single-info-->
-                </div><!--friend-request-single-->
+                <?php }?>
+
             </div><!--friends-request-feed-->
         </div><!--feed-->
     </section><!--main-feed-->

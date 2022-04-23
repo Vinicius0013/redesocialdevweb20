@@ -19,66 +19,19 @@
             <div class="comunidade">
                 <div class="container-comunidade">
                     <h4>Amigos</h4>
+                    
                     <div class="container-comunidade-wraper">
-                        <div class="container-comunidade-single">
-                            <div class="img-comunidade-user-single">
-                                <img src="<?php echo INCLUDE_PATH_STATIC;?>images/avatar.jpg" alt="imagem amigo" />
-                            </div><!--img-comunidade-user-single-->
-                            <div class="info-comunidade-user-single">
-                                <h2>Vinicius</h2>
-                                <p>adicionarseuemailaqui@gmail.com</p>
-                            </div>
-                        </div><!--container-comunidade-single-->
-
-                        <div class="container-comunidade-single">
-                            <div class="img-comunidade-user-single">
-                                <img src="<?php echo INCLUDE_PATH_STATIC;?>images/avatar.jpg" alt="imagem amigo" />
-                            </div><!--img-comunidade-user-single-->
-                            <div class="info-comunidade-user-single">
-                                <h2>Vinicius</h2>
-                                <p>adicionarseuemailaqui@gmail.com</p>
-                            </div>
-                        </div><!--container-comunidade-single-->
-
-                        <div class="container-comunidade-single">
-                            <div class="img-comunidade-user-single">
-                                <img src="<?php echo INCLUDE_PATH_STATIC;?>images/avatar.jpg" alt="imagem amigo" />
-                            </div><!--img-comunidade-user-single-->
-                            <div class="info-comunidade-user-single">
-                                <h2>Vinicius</h2>
-                                <p>adicionarseuemailaqui@gmail.com</p>
-                            </div>
-                        </div><!--container-comunidade-single-->
-
-                        <div class="container-comunidade-single">
-                            <div class="img-comunidade-user-single">
-                                <img src="<?php echo INCLUDE_PATH_STATIC;?>images/avatar.jpg" alt="imagem amigo" />
-                            </div><!--img-comunidade-user-single-->
-                            <div class="info-comunidade-user-single">
-                                <h2>Vinicius</h2>
-                                <p>adicionarseuemailaqui@gmail.com</p>
-                            </div>
-                        </div><!--container-comunidade-single-->
-
-                        <div class="container-comunidade-single">
-                            <div class="img-comunidade-user-single">
-                                <img src="<?php echo INCLUDE_PATH_STATIC;?>images/avatar.jpg" alt="imagem amigo" />
-                            </div><!--img-comunidade-user-single-->
-                            <div class="info-comunidade-user-single">
-                                <h2>Vinicius</h2>
-                                <p>adicionarseuemailaqui@gmail.com</p>
-                            </div>
-                        </div><!--container-comunidade-single-->
-
-                        <div class="container-comunidade-single">
-                            <div class="img-comunidade-user-single">
-                                <img src="<?php echo INCLUDE_PATH_STATIC;?>images/avatar.jpg" alt="imagem amigo" />
-                            </div><!--img-comunidade-user-single-->
-                            <div class="info-comunidade-user-single">
-                                <h2>Vinicius</h2>
-                                <p>adicionarseuemailaqui@gmail.com</p>
-                            </div>
-                        </div><!--container-comunidade-single-->
+                        <?php foreach(\DankiCode\Model\UsuariosModel::listarAmigos() as $key => $value) { ?>
+                            <div class="container-comunidade-single">
+                                <div class="img-comunidade-user-single">
+                                    <img src="<?php echo INCLUDE_PATH_STATIC;?>images/avatar.jpg" alt="imagem amigo" />
+                                </div><!--img-comunidade-user-single-->
+                                <div class="info-comunidade-user-single">
+                                    <h2><?php echo $value['nome']; ?></h2>
+                                    <p><?php echo $value['email']; ?></p>
+                                </div>
+                            </div><!--container-comunidade-single-->
+                        <?php } ?>
 
                     </div><!--container-comunidade-wraper-->
                 </div><!--container-comunidade-->
@@ -87,83 +40,38 @@
                 <div class="container-comunidade">
                     <h4>Comunidade</h4>
                     <div class="container-comunidade-wraper">
-                        <div class="container-comunidade-single">
-                            <div class="img-comunidade-user-single">
-                                <img src="<?php echo INCLUDE_PATH_STATIC; ?>images/avatar.jpg" alt="imagem comunidade" />
-                            </div><!--img-comunidade-user-single-->
-                            <div class="info-comunidade-user-single">
-                                <h2>Vinicius</h2>
-                                <p>adicionarseuemailaqui@gmail.com</p>
-                                <div class="btn-solicitar-amizade">
-                                    <a href="<?php echo INCLUDE_PATH;?>comunidade?solicitarAmizade=10">Solicitar Amizade</a>
-                                </div><!--btn-solicitar-amizade-->
-                            </div><!--info-comunidade-user-single-->
-                        </div><!--container-comunidade-single-->
+                        <?php
+                            $comunidades = \DankiCode\Model\UsuariosModel::listarComunidade();
+                            foreach($comunidades as $key => $value) {
+                                
+                                if (\DankiCode\Model\UsuariosModel::verificarAmizadaComUsuario($value['id'])) {
+                                    //Já são amigos, não existe necessidade de listar.
+                                    continue;
+                                }
 
-                        <div class="container-comunidade-single">
-                            <div class="img-comunidade-user-single">
-                                <img src="<?php echo INCLUDE_PATH_STATIC; ?>images/avatar.jpg" alt="imagem comunidade" />
-                            </div><!--img-comunidade-user-single-->
-                            <div class="info-comunidade-user-single">
-                                <h2>Vinicius</h2>
-                                <p>adicionarseuemailaqui@gmail.com</p>
-                                <div class="btn-solicitar-amizade">
-                                    <a href="<?php echo INCLUDE_PATH;?>comunidade?solicitarAmizade=10">Solicitar Amizade</a>
-                                </div><!--btn-solicitar-amizade-->
-                            </div><!--info-comunidade-user-single-->
-                        </div><!--container-comunidade-single-->
-
-                        <div class="container-comunidade-single">
-                            <div class="img-comunidade-user-single">
-                                <img src="<?php echo INCLUDE_PATH_STATIC; ?>images/avatar.jpg" alt="imagem comunidade" />
-                            </div><!--img-comunidade-user-single-->
-                            <div class="info-comunidade-user-single">
-                                <h2>Vinicius</h2>
-                                <p>adicionarseuemailaqui@gmail.com</p>
-                                <div class="btn-solicitar-amizade">
-                                    <a href="<?php echo INCLUDE_PATH;?>comunidade?solicitarAmizade=10">Solicitar Amizade</a>
-                                </div><!--btn-solicitar-amizade-->
-                            </div><!--info-comunidade-user-single-->
-                        </div><!--container-comunidade-single-->
-
-                        <div class="container-comunidade-single">
-                            <div class="img-comunidade-user-single">
-                                <img src="<?php echo INCLUDE_PATH_STATIC; ?>images/avatar.jpg" alt="imagem comunidade" />
-                            </div><!--img-comunidade-user-single-->
-                            <div class="info-comunidade-user-single">
-                                <h2>Vinicius</h2>
-                                <p>adicionarseuemailaqui@gmail.com</p>
-                                <div class="btn-solicitar-amizade">
-                                    <a href="<?php echo INCLUDE_PATH;?>comunidade?solicitarAmizade=10">Solicitar Amizade</a>
-                                </div><!--btn-solicitar-amizade-->
-                            </div><!--info-comunidade-user-single-->
-                        </div><!--container-comunidade-single-->
-
-                        <div class="container-comunidade-single">
-                            <div class="img-comunidade-user-single">
-                                <img src="<?php echo INCLUDE_PATH_STATIC; ?>images/avatar.jpg" alt="imagem comunidade" />
-                            </div><!--img-comunidade-user-single-->
-                            <div class="info-comunidade-user-single">
-                                <h2>Vinicius</h2>
-                                <p>adicionarseuemailaqui@gmail.com</p>
-                                <div class="btn-solicitar-amizade">
-                                    <a href="<?php echo INCLUDE_PATH;?>comunidade?solicitarAmizade=10">Solicitar Amizade</a>
-                                </div><!--btn-solicitar-amizade-->
-                            </div><!--info-comunidade-user-single-->
-                        </div><!--container-comunidade-single-->
-
-                        <div class="container-comunidade-single">
-                            <div class="img-comunidade-user-single">
-                                <img src="<?php echo INCLUDE_PATH_STATIC; ?>images/avatar.jpg" alt="imagem comunidade" />
-                            </div><!--img-comunidade-user-single-->
-                            <div class="info-comunidade-user-single">
-                                <h2>Vinicius</h2>
-                                <p>adicionarseuemailaqui@gmail.com</p>
-                                <div class="btn-solicitar-amizade">
-                                    <a href="<?php echo INCLUDE_PATH;?>comunidade?solicitarAmizade=10">Solicitar Amizade</a>
-                                </div><!--btn-solicitar-amizade-->
-                            </div><!--info-comunidade-user-single-->
-                        </div><!--container-comunidade-single-->
+                                if ($value['id'] == $_SESSION['id']) :
+                                    continue;
+                                endif;
+                        ?>
+                            <div class="container-comunidade-single">
+                                <div class="img-comunidade-user-single">
+                                    <img src="<?php echo INCLUDE_PATH_STATIC; ?>images/avatar.jpg" alt="imagem comunidade" />
+                                </div><!--img-comunidade-user-single-->
+                                <div class="info-comunidade-user-single">
+                                    <h2><?php echo $value['nome']; ?></h2>
+                                    <p><?php echo $value['email']; ?></p>
+                                    <div class="btn-solicitar-amizade">
+                                        <?php if (\DankiCode\Model\UsuariosModel::existePedidoAmizade($value['id'])) :?>
+                                            <a href="<?php echo INCLUDE_PATH;?>comunidade?solicitarAmizade=<?php echo $value['id']; ?>">Solicitar Amizade</a>
+                                        <?php else : ?>
+                                            <a href="javascript:void(0)" style="border:0;color:orange;">Pedido Pendente</a>
+                                        <?php endif; ?>
+                                    </div><!--btn-solicitar-amizade-->
+                                </div><!--info-comunidade-user-single-->
+                            </div><!--container-comunidade-single-->
+                        <?php
+                            }
+                        ?>
 
                     </div><!--container-comunidade-wraper-->
                 </div><!--container-comunidade-->

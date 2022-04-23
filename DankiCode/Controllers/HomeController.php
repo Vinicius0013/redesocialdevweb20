@@ -13,6 +13,23 @@
             }
 
             if (isset($_SESSION['login'])) {
+                //Existe pedido de amizade?
+                if (isset($_GET['recusarAmizade'])) {
+                    $idEnviou = (int)$_GET['recusarAmizade'];
+                    \DankiCode\Model\UsuariosModel::atualizarPedidoAmizade($idEnviou,0);
+                    \DankiCode\Utilidades::alerta('Amizade Recusada :(');
+                    \DankiCode\Utilidades::redirect(INCLUDE_PATH);
+                } else if (isset($_GET['aceitarAmizade'])) {
+                    $idEnviou = (int)$_GET['aceitarAmizade'];
+                    if(\DankiCode\Model\UsuariosModel::atualizarPedidoAmizade($idEnviou,1)) {
+                        \DankiCode\Utilidades::alerta('Amizade Aceita!');
+                        \DankiCode\Utilidades::redirect(INCLUDE_PATH);
+                    } else {
+                        \DankiCode\Utilidades::alerta('Ops... um erro ocorreu!');
+                        \DankiCode\Utilidades::redirect(INCLUDE_PATH);
+                    }
+                    
+                }
                 // Renderiza a home do usuário.
                 \DankiCode\Views\MainView::render('home');
             } else {
@@ -37,6 +54,7 @@
                         if (\DankiCode\Bcrypt::check($senha,$senhaBanco)) {
                             // Usuário logado com sucesso
                             $_SESSION['login'] = $dados['email'];
+                            $_SESSION['id'] = $dados['id'];
                             $_SESSION['nome'] = explode(' ', $dados['nome'])[0];
                             \DankiCode\Utilidades::alerta('Login realizado com sucesso!');
                             \DankiCode\Utilidades::redirect(INCLUDE_PATH);
