@@ -30,6 +30,18 @@
                     }
                     
                 }
+
+                // Existe postagem no feed?
+                if (isset($_POST['post_feed'])) {
+                    if ($_POST['post_content'] == '') {
+                        \DankiCode\Utilidades::alerta('Não permitimos posts vázios :(');
+                        \DankiCode\Utilidades::redirect(INCLUDE_PATH);
+                    }
+                    
+                    \DankiCode\Model\HomeModel::postFeed($_POST['post_content']);
+                    \DankiCode\Utilidades::alerta('Post feito com sucesso!');
+                    \DankiCode\Utilidades::redirect(INCLUDE_PATH);
+                }
                 // Renderiza a home do usuário.
                 \DankiCode\Views\MainView::render('home');
             } else {
