@@ -25,38 +25,40 @@
                         <input type="submit" name="acao" value="Postar!">
                     </form>
                 </div><!--feed-form-->
+                <?php
+                    $retrievePosts = \DankiCode\Model\HomeModel::retrieveFriendsPosts();
+
+                    foreach($retrievePosts as $key => $value) {
+                ?>
                 <div class="feed-single-post">
                     <div class="feed-single-post-author">
                         <div class="img-single-post-author">
-                            <img src="<?php echo INCLUDE_PATH_STATIC;?>images/avatar.jpg" alt="avatar">
+                            <?php if (!isset($value['me']) && $value['img'] == '') { ?>
+                                <img src="<?php echo INCLUDE_PATH_STATIC;?>images/avatar.jpg" alt="avatar">
+                            <?php } else if (!isset($value['me'])) { ?>
+                                <img src="<?php echo INCLUDE_PATH;?>uploads/<?php echo $value['img']; ?>" alt="avatar">
+                            <?php } ?>
+
+                            <?php if (isset($value['me']) && $_SESSION['img'] == '') { ?>
+                                <img src="<?php echo INCLUDE_PATH_STATIC;?>images/avatar.jpg" alt="avatar">
+                            <?php } else if (isset($value['me'])) { ?>
+                                <img src="<?php echo INCLUDE_PATH;?>uploads/<?php echo $_SESSION['img']; ?>" alt="avatar">
+                            <?php } ?>
                         </div>
                         <div class="feed-single-post-author-info">
-                            <h3>Vinicius</h3>
-                            <p>17:18 16/04/2022</p>
+                            <?php if (isset($value['me'])) { ?>
+                                <h3><?php echo $_SESSION['nome']; ?> (eu)</h3>
+                            <?php } else {?>
+                                <h3><?php echo $value['usuario']; ?></h3>
+                            <?php }?>
+                            <p><?php echo date('d/m/Y H:i:s', strtotime($value['data'])); ?></p>
                         </div><!--feed-single-post-author-info-->
                     </div><!--feed-single-post-author-->
                     <div class="feed-single-post-content">
-                        <p>Dia de reunião com a equipe e de lembar as coisas boas de 2020. Lembre-se: É importante nos matermos 
-                        ativos. Independente do dia! Cuide da sua saúde física e mental. Ainda mais se você é empreendedor(a).</p>
+                        <?php echo $value['conteudo']; ?>
                     </div><!--feed-single-post-content-->
                 </div><!--feed-single-post-->
-                <div class="feed-single-post">
-                    <div class="feed-single-post-author">
-                        <div class="img-single-post-author">
-                            <img src="<?php echo INCLUDE_PATH_STATIC;?>images/avatar.jpg" alt="avatar">
-                        </div>
-                        <div class="feed-single-post-author-info">
-                            <h3>Vinicius</h3>
-                            <p>17:18 16/04/2022</p>
-                        </div><!--feed-single-post-author-info-->
-                    </div><!--feed-single-post-author-->
-                    <div class="feed-single-post-content">
-                        <p>Dia de reunião com a equipe e de lembar as coisas boas de 2020. Lembre-se: É importante nos matermos 
-                        ativos. Independente do dia! Cuide da sua saúde física e mental. Ainda mais se você é empreendedor(a).</p>
-                        <img src="<?php echo INCLUDE_PATH_STATIC; ?>images/post-placeholder.png" alt="imagem post">
-                    </div><!--feed-single-post-content-->
-                </div><!--feed-single-post-->
-                
+                <?php } ?>
             </div>
             
 

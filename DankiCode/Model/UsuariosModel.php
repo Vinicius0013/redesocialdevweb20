@@ -107,6 +107,7 @@
                 $friend = self::getUsuarioById($value);
                 $listaAmigos[$key]['nome'] = $friend['nome'];
                 $listaAmigos[$key]['email'] = $friend['email'];
+                $listaAmigos[$key]['img'] = $friend['img'];
             }
 
             return $listaAmigos;

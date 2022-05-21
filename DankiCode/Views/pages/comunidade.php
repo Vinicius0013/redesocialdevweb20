@@ -24,7 +24,17 @@
                         <?php foreach(\DankiCode\Model\UsuariosModel::listarAmigos() as $key => $value) { ?>
                             <div class="container-comunidade-single">
                                 <div class="img-comunidade-user-single">
-                                    <img src="<?php echo INCLUDE_PATH_STATIC;?>images/avatar.jpg" alt="imagem amigo" />
+                                    <?php
+                                        if ($value['img'] == '') {
+                                    ?>
+                                        <img src="<?php echo INCLUDE_PATH_STATIC;?>images/avatar.jpg" alt="imagem amigo" />
+                                    <?php
+                                        } else {
+                                    ?>
+                                        <img src="<?php echo INCLUDE_PATH;?>uploads/<?php echo $value['img'];?>" alt="imagem amigo" />
+                                    <?php
+                                        }
+                                    ?>
                                 </div><!--img-comunidade-user-single-->
                                 <div class="info-comunidade-user-single">
                                     <h2><?php echo $value['nome']; ?></h2>
